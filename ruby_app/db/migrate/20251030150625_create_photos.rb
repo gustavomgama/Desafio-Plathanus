@@ -8,6 +8,8 @@ class CreatePhotos < ActiveRecord::Migration[8.0]
       t.integer :file_size
 
       t.timestamps
+
+      t.index [:property_id, :position], unique: true
     end
   end
 end

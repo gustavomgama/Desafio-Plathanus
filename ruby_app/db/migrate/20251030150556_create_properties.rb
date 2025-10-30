@@ -4,6 +4,8 @@ class CreateProperties < ActiveRecord::Migration[8.0]
       t.string :name
 
       t.timestamps
+
+      t.index :name
     end
   end
 end
