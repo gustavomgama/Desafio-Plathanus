@@ -113,7 +113,7 @@ RSpec.describe Photo, type: :model do
         photo1 = create(:photo, property: property, position: 1)
         photo2 = create(:photo, property: property, position: 2)
 
-        expect(Photo.by_position.to_a).to eq([photo1, photo2, photo3])
+        expect(Photo.by_position.to_a).to eq([ photo1, photo2, photo3 ])
       end
     end
   end

@@ -9,7 +9,7 @@ class CreatePhotos < ActiveRecord::Migration[8.0]
 
       t.timestamps
 
-      t.index [:property_id, :position], unique: true
+      t.index [ :property_id, :position ], unique: true
     end
   end
 end

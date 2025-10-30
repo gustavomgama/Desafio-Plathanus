@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :property do
-    name { "#{Faker::Adjective.positive.capitalize} #{['House', 'Villa', 'Apartment', 'Condo'].sample}" }
+    name { "#{Faker::Adjective.positive.capitalize} #{[ 'House', 'Villa', 'Apartment', 'Condo' ].sample}" }
 
     trait :with_few_photos do
       after(:create) do |property|

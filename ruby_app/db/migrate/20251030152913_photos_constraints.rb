@@ -4,7 +4,7 @@ class EnhancePhotosConstraints < ActiveRecord::Migration[8.0]
     change_column_null :photos, :filename, false
     change_column_null :photos, :position, false
 
-    add_index :photos, [:property_id, :position], unique: true, if_not_exists: true
+    add_index :photos, [ :property_id, :position ], unique: true, if_not_exists: true
 
     execute <<-SQL
       ALTER TABLE photos
@@ -23,7 +23,7 @@ class EnhancePhotosConstraints < ActiveRecord::Migration[8.0]
     execute "ALTER TABLE photos DROP CONSTRAINT IF EXISTS photos_position_positive"
     execute "ALTER TABLE photos DROP CONSTRAINT IF EXISTS photos_file_size_positive"
 
-    remove_index :photos, [:property_id, :position], if_exists: true
+    remove_index :photos, [ :property_id, :position ], if_exists: true
 
     change_column_null :photos, :position, true
     change_column_null :photos, :filename, true

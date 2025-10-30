@@ -42,7 +42,7 @@ RSpec.describe Property, type: :model do
       photo1 = create(:photo, property: property, position: 1)
       photo2 = create(:photo, property: property, position: 2)
 
-      expect(property.photos.to_a).to eq([photo1, photo2, photo3])
+      expect(property.photos.to_a).to eq([ photo1, photo2, photo3 ])
     end
 
     it 'destroys photos when property is destroyed' do
