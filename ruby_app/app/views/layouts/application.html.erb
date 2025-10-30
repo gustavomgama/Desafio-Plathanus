@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Ruby App" %></title>
+    <title><%= content_for(:title) || "PropertyHub - Premium Furnished Properties" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -18,13 +18,43 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload", defer: false %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-brand-light min-h-screen font-sans">
+    <nav class="bg-white shadow-lg fixed top-0 w-full z-50 border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <%= link_to root_path, class: "text-2xl font-bold text-brand-dark hover:text-brand-primary transition-colors" do %>
+              <span class="text-brand-accent">Property</span><span class="text-brand-dark">Hub</span>
+            <% end %>
+          </div>
+          <div class="hidden md:flex items-center space-x-8">
+            <%= link_to "Properties", properties_path, class: "font-medium text-brand-dark hover:text-brand-primary transition-colors" %>
+            <span class="text-sm text-brand-secondary"><%= Property.count %> properties</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-16 min-h-screen">
       <%= yield %>
     </main>
+
+    <footer class="bg-white border-t border-gray-200 mt-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center">
+          <div class="mb-6">
+            <span class="text-3xl font-bold text-brand-accent">Property</span><span class="text-3xl font-bold text-brand-dark">Hub</span>
+          </div>
+          <div class="w-12 h-0.5 bg-brand-accent mx-auto mb-6"></div>
+          <p class="text-sm text-brand-secondary">
+            &copy; <%= Date.current.year %> PropertyHub. Crafted with precision and care.
+          </p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
