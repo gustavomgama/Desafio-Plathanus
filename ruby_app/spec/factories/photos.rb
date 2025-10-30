@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :photo do
     association :property
     sequence(:filename) { |n| "photo_#{n}.jpg" }
-    position { nil } # Let the model set this automatically unless explicitly provided
+    position { nil }
     content_type { "image/jpeg" }
     file_size { rand(100_000..2_000_000) }
 

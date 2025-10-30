@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "properties#index"
 
   resources :properties, only: [ :index, :show ] do
-    resources :photos, only: [ :show ], params: :filename
+    resources :photos, only: [ :show ]
   end
 
   get "/photos/:property_id/:filename", to: "photos#show", as: :photo,
