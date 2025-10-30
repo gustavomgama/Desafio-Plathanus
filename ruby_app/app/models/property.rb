@@ -4,11 +4,11 @@ class Property < ApplicationRecord
   validates :name, presence: true, length: { minimum: 2, maximum: 100 }
 
   def cover_photo
-    photos.loaded? ? cover_photo_from_loaded : cover_photo_from_database
+    @cover_photo ||= photos.loaded? ? cover_photo_from_loaded : cover_photo_from_database
   end
 
   def has_cover_photo?
-    photos.loaded? ? photos.size >= 3 : photos.count >= 3
+    @has_cover_photo ||= photos.loaded? ? photos.size >= 3 : photos.count >= 3
   end
 
   def cover_photo_position
