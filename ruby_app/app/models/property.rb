@@ -8,7 +8,7 @@ class Property < ApplicationRecord
   end
 
   def has_cover_photo?
-    photos.count >= 3
+    photos.loaded? ? photos.size >= 3 : photos.count >= 3
   end
 
   def cover_photo_position
